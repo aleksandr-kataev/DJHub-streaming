@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  streaming-service:
+      build:
+        context: ../
+        dockerfile: .devcontainer/Dockerfile
+      container_name: streaming-service_c
+      ports:
+        - 3002:3002
+        - 9230:9230
+      volumes:
+        - ..:/streaming-src:cached
+        - ../.ssh:/root/.ssh
+      command: /bin/sh -c "while sleep 1000; do :; done"
